@@ -9,7 +9,7 @@ function App() {
   // Fetch all todos when app loads
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/todos") // <-- backend runs on 5000
+      .get("https://api-todo-backend-lhs7.onrender.com/api/todos") // <-- backend runs on 5000
       .then((res) => setTodos(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -18,7 +18,7 @@ function App() {
   const addTodo = async () => {
     if (!text.trim()) return;
     try {
-      const res = await axios.post("http://localhost:5000/api/todos", { text });
+      const res = await axios.post("https://api-todo-backend-lhs7.onrender.com/api/todos", { text });
       setTodos([...todos, res.data]);
       setText("");
     } catch (err) {
@@ -29,7 +29,7 @@ function App() {
   // Delete a todo
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/todos/${id}`);
+      await axios.delete(`https://api-todo-backend-lhs7.onrender.com/api/todos/${id}`);
       setTodos(todos.filter((todo) => todo._id !== id));
     } catch (err) {
       console.error(err);
